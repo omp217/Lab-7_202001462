@@ -3,7 +3,7 @@
 **Name: Om Patel**  
 **ID: 202001462**  
 
-## Section-A
+## Section-B
 **Based on the input ranges, we can identify the following equivalence classes:** <br>
 
 **Equivalence Class Partitions** <br/>
