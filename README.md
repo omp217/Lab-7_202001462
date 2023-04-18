@@ -669,5 +669,344 @@ Test 8: p = vector with three or more points with the same y component, and all 
 
 
 
-Here is the doc link with screenshots
-https://docs.google.com/document/d/1C-NMxh3TrEJivuO7QM-4ATPLVJDl-vI91385_5OvfOE/edit#
+Here is the screenshot of Eclipse:
+
+Step 1: Install Eclipse IDE
+
+![image](https://user-images.githubusercontent.com/111455228/232731823-fc115587-cd24-4953-a5ce-db8914a63220.png)
+
+Step 2: Add JUNIT in Eclipse
+
+![image](https://user-images.githubusercontent.com/111455228/232732046-69abc525-33e0-4113-9dd0-43940279e112.png)
+
+### P1
+
+    package tests;
+    public class UnitTesting {
+      public int linearSearch(int v,int a[]) {
+        int i = 0;
+        while (i < a.length)
+        {
+          if (a[i] == v)
+            return(i);
+          i++;
+        }
+        return (-1);
+      }
+
+
+![image](https://user-images.githubusercontent.com/111455228/232732422-df7cb320-6c4f-4ade-b331-ce047742ae14.png)
+
+
+![image](https://user-images.githubusercontent.com/111455228/232733534-b1a7a282-1e2e-4417-a007-56b7b163389f.png)
+
+![image](https://user-images.githubusercontent.com/111455228/232733668-d0c1cc3f-4510-45d3-b61d-cf1768e76172.png)
+
+As we can see that first three test cases are correct and last one is incorrect.
+Left Index shows us the test case results.
+We also see that if we input v as double than it gives an error.So input should only be an integer.
+
+### P2
+
+    package tests;
+    public class UnitTesting {
+      public int linearSearch(int v,int a[]) {
+        int count = 0;
+        for (int i = 0; i < a.length; i++)
+        {
+        if (a[i] == v)
+        count++;
+        }
+        return (count);
+      }
+    }
+    
+![image](https://user-images.githubusercontent.com/111455228/232733906-4bdec77b-8d47-4269-8028-0e0af269ba39.png)
+
+![image](https://user-images.githubusercontent.com/111455228/232734026-454238c7-99d3-4e0b-ab0a-f9f41bc8b8e6.png)
+
+![image](https://user-images.githubusercontent.com/111455228/232734133-91420a20-aea4-4a51-820a-c55cefa91419.png)
+
+This proves our table and shows the result of testcases on left index.
+
+    package tests;
+    import org.junit.Test;
+    import org.junit.FixMethodOrder;
+    import org.junit.runners.MethodSorters;
+    import static org.junit.Assert.*;
+    //import org.junit.Test;
+    @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+    public class squareUnit {
+      @Test
+    public void test1() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={1,2,3,4,4};  
+        int output_f = obj1.linearSearch(4, n);
+
+        assertEquals(2, output_f);
+      }
+      @Test
+      public void test2() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={12,-24,2,89,34,45};  
+        int output_f = obj1.linearSearch(24, n);
+
+        assertEquals(1, output_f);
+      }
+      @Test
+      public void test3() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={1,2,3,4,5};  
+        int output_f = obj1.linearSearch(24, n);
+
+        assertEquals(0, output_f);
+      }
+      @Test
+      public void test4() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={12,24,2,89,34,45};  
+        int output_f = obj1.linearSearch(24, n);
+
+        assertEquals(1, output_f);
+      }
+      @Test
+      public void test5() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={};  
+        int output_f = obj1.linearSearch(24, n);
+        assertEquals(1, output_f);
+      }
+    }
+    P3
+    package tests;
+    public class UnitTesting {
+      public int linearSearch(int v,int a[]) {
+        int lo,mid,hi;
+        lo = 0;
+        hi = a.length-1;
+        while (lo <= hi)
+        {
+        mid = (lo+hi)/2;
+        if (v == a[mid])
+        return (mid);
+        else if (v < a[mid])
+        hi = mid-1;
+        else
+        lo = mid+1;
+        }
+        return(-1);
+      }
+    }
+
+
+![image](https://user-images.githubusercontent.com/111455228/232734413-b8dfa609-ba6d-4aad-9dc2-6dfa3f9d4df1.png)
+
+![image](https://user-images.githubusercontent.com/111455228/232734595-990f1821-5794-48ca-9929-37c3c4a411b0.png)
+
+![image](https://user-images.githubusercontent.com/111455228/232734596-bac6908f-79c2-4fe6-9a30-0e633718e4aa.png)
+
+    package tests;
+    import org.junit.Test;
+    import org.junit.FixMethodOrder;
+    import org.junit.runners.MethodSorters;
+    import static org.junit.Assert.*;
+    //import org.junit.Test;
+    @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+    public class squareUnit {
+      @Test
+      public void test1() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={1};  
+        int output_f = obj1.linearSearch(4, n);
+
+        assertEquals(-1, output_f);
+      }
+      @Test
+      public void test2() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={24,26,90};  
+        int output_f = obj1.linearSearch(24,n);
+
+        assertEquals(0, output_f);
+      }
+      @Test
+      public void test3() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={1,2,3,4,5};  
+        int output_f = obj1.linearSearch(4, n);
+
+        assertEquals(1, output_f);
+      }
+      @Test
+      public void test4() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={};  
+        int output_f = obj1.linearSearch(24, n);
+
+        assertEquals(-1, output_f);
+      }
+      @Test
+      public void test5() {
+        UnitTesting obj1= new UnitTesting();
+        int[] n={};  
+        int output_f = obj1.linearSearch(24, n);
+        assertEquals(1, output_f);
+      }
+    }
+
+
+### P4
+
+    package tests;
+    public class UnitTesting {
+      final int EQUILATERAL = 0;
+      final int ISOSCELES = 1;
+      final int SCALENE = 2;
+      final int INVALID = 3;
+      public int linearSearch(int a,int b,int c) {
+        if (a >= b+c || b >= a+c || c >= a+b)
+          return(INVALID);
+        if (a == b && b == c)
+          return(EQUILATERAL);
+        if (a == b || a == c || b == c)
+          return(ISOSCELES);
+
+          return(SCALENE);
+      }
+    }
+
+![image](https://user-images.githubusercontent.com/111455228/232734703-567b9088-2740-48a0-ba7d-213090d292dc.png)
+
+    package tests;
+    import org.junit.Test;
+    import org.junit.FixMethodOrder;
+    import org.junit.runners.MethodSorters;
+    import static org.junit.Assert.*;
+    //import org.junit.Test;
+    @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+    public class squareUnit {
+      @Test
+      public void test1() {
+        UnitTesting obj1= new UnitTesting();
+        int output_f = obj1.linearSearch(6,6,6);
+        assertEquals(0, output_f);
+      }
+      @Test
+      public void test2() {
+        UnitTesting obj1= new UnitTesting();
+        int output_f = obj1.linearSearch(10000,10000,9999);
+        assertEquals(1, output_f);
+      }
+
+      @Test
+      public void test3() {
+        UnitTesting obj1= new UnitTesting();
+        int output_f = obj1.linearSearch(10000,10000,99999);
+        assertEquals(1, output_f);
+      }
+      @Test
+      public void test4() {
+        UnitTesting obj1= new UnitTesting();
+        int output_f = obj1.linearSearch(0,0,0);
+        assertEquals(0, output_f);
+      }
+    }
+
+![image](https://user-images.githubusercontent.com/111455228/232734739-2e74a4a4-3254-4de8-8a5e-739bdac46a23.png)
+
+![image](https://user-images.githubusercontent.com/111455228/232734756-ed74f691-96de-487b-8942-e9369f9fc386.png)
+
+### P5
+
+![image](https://user-images.githubusercontent.com/111455228/232734799-258039ea-ba5f-4f19-96ed-bc302c8791b2.png)
+
+    package tests;
+    import static org.junit.Assert.*;
+    import org.junit.Test;
+    public class prefixtest {
+    @Test
+    public void test1() {
+    unittesting obj1= new unittesting();
+    // int[] n={1,2,3,4,5,6,7,8};
+    boolean output_f = obj1.prefix("maharth", "maharththakar");
+    assertEquals(true, output_f);
+    }
+    @Test
+    public void test2() {
+    unittesting obj1= new unittesting();
+    // int[] n={11,12,13,14,15,16,17};
+    boolean output_f = obj1.prefix("hihello","hi" );
+    assertEquals(true, output_f);
+    }
+    @Test
+    public void test3() {
+    unittesting obj1= new unittesting();
+    // int[] n={11,12,13,14,15,16,17};
+    boolean output_f = obj1.prefix("hello","helluhow" );
+    assertEquals(true, output_f);
+    }
+    }
+
+Class 1: Invalid inputs (negative or zero values)
+Class 2: Non-triangle (sum of the two shorter sides is not greater than the longest side)
+Class 3: Scalene triangle (no sides are equal)
+Class 4: Isosceles triangle (two sides are equal)
+Class 5: Equilateral triangle (all sides are equal)
+Class 6: Right-angled triangle (satisfies the Pythagorean theorem)
+
+
+Class 1: -1, 0
+Class 2: 1, 2, 5
+Class 3: 3, 4, 5
+Class 4: 5, 5, 7
+Class 5: 6, 6, 6
+Class 6: 3, 4, 5
+
+Test case 1 covers class 1, test case 2 covers class 2, test case 3 covers class 3, test case 4 covers class 4, test case 5 covers class 5, and test case 6 covers class 6.
+
+c) Test cases to verify the boundary condition A + B > C for the scalene triangle:
+
+2, 3, 6
+
+3, 4, 8
+
+Both test cases have two sides that are shorter than the third side, and should not form a triangle.
+
+d) Test cases to verify the boundary condition A = C for the isosceles triangle:
+
+2, 3, 3
+
+5, 6, 5
+
+Both test cases have two sides that are equal, and should form an isosceles triangle.
+
+e) Test cases to verify the boundary condition A = B = C for the equilateral triangle:
+
+5, 5, 5
+
+9, 9, 9
+
+Both test cases have all sides equal, and should form an equilateral triangle.
+
+f) Test cases to verify the boundary condition A^2 + B^2 = C^2 for the right-angled triangle:
+
+3, 4, 5
+
+5, 12, 13
+
+Both test cases satisfy the Pythagorean theorem and should form a right-angled triangle.
+
+g) For the non-triangle case, identify test cases to explore the boundary.
+
+2, 2, 4
+
+3, 6, 9
+
+Both test cases have two sides that add up to the third side, and should not form a triangle.
+
+h) For non-positive input, identify test points.
+
+0, 1, 2
+
+1, -2, -3
+Both test cases have at least one non-positive value, which is an invalid input.
